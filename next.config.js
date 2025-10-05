@@ -3,6 +3,14 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  // Configure port for production and development
+  env: {
+    PORT: process.env.PORT || '3006',
+  },
+  // Server configuration
+  serverRuntimeConfig: {
+    port: parseInt(process.env.PORT || '3006', 10),
+  },
   // Enable CORS for Flutter app
   async headers() {
     return [

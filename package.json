@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3006",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3006",
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -15,7 +15,17 @@
     "test-all-roles": "tsx scripts/test-all-roles.ts",
     "test-simple": "tsx scripts/simple-test.ts",
     "test-reports": "tsx scripts/test-reports.ts",
-    "setup": "node scripts/setup.js"
+    "setup": "node scripts/setup.js",
+    "pm2:dev": "pm2 start ecosystem.config.js --only amenties-dev",
+    "pm2:prod": "pm2 start ecosystem.config.js --only amenties-prod",
+    "pm2:staging": "pm2 start ecosystem.config.js --only amenties-staging",
+    "pm2:stop": "pm2 stop ecosystem.config.js",
+    "pm2:restart": "pm2 restart ecosystem.config.js",
+    "pm2:reload": "pm2 reload ecosystem.config.js",
+    "pm2:delete": "pm2 delete ecosystem.config.js",
+    "pm2:logs": "pm2 logs",
+    "pm2:monitor": "pm2 monit",
+    "pm2:status": "pm2 status"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
