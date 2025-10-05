@@ -52,15 +52,16 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('AI photo analysis error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     console.error('Error details:', {
-      message: error.message,
-      stack: error.stack,
-      name: error.name
+      message: errorMessage,
+      stack: error instanceof Error ? error.stack : undefined,
+      name: error instanceof Error ? error.name : undefined
     });
     return NextResponse.json(
       { 
         error: 'Failed to analyze photo',
-        details: error.message 
+        details: errorMessage 
       },
       { status: 500 }
     );

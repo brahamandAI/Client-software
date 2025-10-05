@@ -27,3 +27,14 @@ export function ChartWrapper({ children }: { children: React.ReactNode }) {
     </Suspense>
   );
 }
+
+// Default export for React.lazy
+export default function LazyCharts() {
+  return (
+    <div className="space-y-4">
+      <LazyLineChart />
+      <LazyBarChart />
+      <LazyPieChart />
+    </div>
+  );
+}

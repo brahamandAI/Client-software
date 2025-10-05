@@ -27,8 +27,9 @@ export default function TestPage() {
       setTestResults({ endpoint, method, status: response.status, data });
       toast.success(`API test completed: ${endpoint}`);
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
       toast.error(`API test failed: ${endpoint}`);
-      setTestResults({ endpoint, method, error: error.message });
+      setTestResults({ endpoint, method, error: errorMessage });
     } finally {
       setLoading(false);
     }
@@ -65,8 +66,9 @@ export default function TestPage() {
         setLoading(false);
       }, 'image/jpeg');
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
       toast.error('File upload test failed');
-      setTestResults({ endpoint: '/api/media/upload', method: 'POST', error: error.message });
+      setTestResults({ endpoint: '/api/media/upload', method: 'POST', error: errorMessage });
       setLoading(false);
     }
   };

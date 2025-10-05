@@ -300,10 +300,10 @@ export default function IssueAnalyticsPage() {
                   </p>
                 </div>
                 <div className="flex gap-1">
-                  <Badge className={getPriorityColor(issue.priority)} size="sm">
+                  <Badge className={getPriorityColor(issue.priority)}>
                     {issue.priority}
                   </Badge>
-                  <Badge className={getStatusColor(issue.status)} size="sm">
+                  <Badge className={getStatusColor(issue.status)}>
                     {issue.status}
                   </Badge>
                 </div>

@@ -20,8 +20,8 @@ export async function performHealthCheck(): Promise<HealthStatus> {
   const startTime = Date.now();
   const timestamp = new Date().toISOString();
   
-  let databaseStatus = { status: 'disconnected' as const, message: 'Not checked' };
-  let emailStatus = { status: 'not_working' as const, message: 'Not checked' };
+  let databaseStatus: HealthStatus['database'] = { status: 'disconnected', message: 'Not checked' };
+  let emailStatus: HealthStatus['email'] = { status: 'not_working', message: 'Not checked' };
 
   // Check Database Connection
   try {

@@ -104,7 +104,7 @@ export default function ManagerDashboard() {
           amenity.status === 'needs_maintenance'
         ).length,
         uptimePercentage: misReport.metrics?.uptimeByAmenityType ? 
-          Object.values(misReport.metrics.uptimeByAmenityType).reduce((a: number, b: number) => a + b, 0) / 
+          (Object.values(misReport.metrics.uptimeByAmenityType) as number[]).reduce((a: number, b: number) => a + b, 0) / 
           Object.keys(misReport.metrics.uptimeByAmenityType).length : 0,
       });
     }

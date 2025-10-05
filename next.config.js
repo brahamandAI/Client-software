@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
   // Configure port for production and development
   env: {
     PORT: process.env.PORT || '3006',

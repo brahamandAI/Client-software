@@ -52,7 +52,7 @@ export async function GET(request: NextRequest) {
     const dateFrom = searchParams.get('dateFrom');
     const dateTo = searchParams.get('dateTo');
 
-    let query: any = {};
+    const query: any = {};
 
     // Apply filters
     if (stationId) query.stationId = stationId;

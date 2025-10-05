@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
     const dateFrom = searchParams.get('dateFrom');
     const dateTo = searchParams.get('dateTo');
 
-    let query: any = {};
+    const query: any = {};
 
     // Date range filter
     if (dateFrom || dateTo) {

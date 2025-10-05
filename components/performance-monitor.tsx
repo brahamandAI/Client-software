@@ -9,7 +9,8 @@ export function PerformanceMonitor() {
       const observer = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           if (entry.entryType === 'navigation') {
-            console.log('🚀 Page Load Time:', entry.loadEventEnd - entry.loadEventStart, 'ms');
+            const navEntry = entry as PerformanceNavigationTiming;
+            console.log('🚀 Page Load Time:', navEntry.loadEventEnd - navEntry.loadEventStart, 'ms');
           }
         }
       });

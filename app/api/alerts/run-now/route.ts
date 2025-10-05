@@ -52,12 +52,13 @@ export async function POST(request: NextRequest) {
           error: result.error,
         });
       } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
         results.push({
           issueId: issue._id,
           stationName: issue.stationId?.name,
           hoursOverdue,
           emailSent: false,
-          error: error.message,
+          error: errorMessage,
         });
       }
     }
@@ -67,7 +68,8 @@ export async function POST(request: NextRequest) {
       results,
     });
   } catch (error) {
-    console.error('Run alerts error:', error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error('Run alerts error:', errorMessage);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

@@ -16,7 +16,6 @@ export const MemoizedButton = memo(({ children, className, ...props }: any) => (
 ));
 
 // Lazy load heavy components
-export const LazyAnalytics = React.lazy(() => import('./analytics'));
 export const LazyCharts = React.lazy(() => import('./lazy-charts'));
 
 // Loading fallback

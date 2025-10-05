@@ -212,7 +212,13 @@ export default function StationAnalyticsPage() {
         </div>
         
         {/* Render the sample analytics data */}
-        <AnalyticsContent analytics={sampleAnalytics} />
+        <AnalyticsContent 
+          analytics={sampleAnalytics} 
+          period={period} 
+          selectedStation={selectedStation} 
+          setPeriod={setPeriod} 
+          setSelectedStation={setSelectedStation} 
+        />
       </div>
     );
   }
