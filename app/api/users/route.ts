@@ -14,6 +14,7 @@ const createUserSchema = z.object({
   password: z.string().min(6, 'Password must be at least 6 characters'),
   role: z.enum(['SuperAdmin', 'StationManager', 'Staff', 'Public']),
   stationId: z.string().optional(),
+  isActive: z.boolean().optional().default(true),
 });
 
 // CORS headers
@@ -87,7 +88,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { name, email, password, role, stationId } = createUserSchema.parse(body);
+    const { name, email, password, role, stationId, isActive } = createUserSchema.parse(body);
 
     await connectDB();
 
@@ -111,6 +112,7 @@ export async function POST(request: NextRequest) {
       passwordHash,
       role,
       stationId: stationId || undefined,
+      isActive: isActive !== undefined ? isActive : true,
     });
 
     await newUser.populate('stationId', 'name code');

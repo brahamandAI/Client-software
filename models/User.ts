@@ -6,6 +6,7 @@ export interface IUser extends Document {
   passwordHash: string;
   role: 'SuperAdmin' | 'StationManager' | 'Staff' | 'Public';
   stationId?: mongoose.Types.ObjectId;
+  isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -38,6 +39,10 @@ const UserSchema = new Schema<IUser>({
     required: function() {
       return this.role !== 'SuperAdmin' && this.role !== 'Public';
     },
+  },
+  isActive: {
+    type: Boolean,
+    default: true,
   },
 }, {
   timestamps: true,
